@@ -2,7 +2,6 @@ from django import forms
 
 class UploadTextForm(forms.Form):
     text_file = forms.FileField(label="Select a .txt file", required=True)
-    text_file.widget.attrs.update({'accept': '.txt'})
 
     def clean_text_file(self):
         text_file = self.cleaned_data['text_file']
