@@ -11,7 +11,16 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
+# Assuming your .env file is in the project's root directory
+dotenv_path = Path(__file__).resolve().parent.parent.parent / '.env'
+print(f"Loading environment variables from {dotenv_path}")
+load_dotenv(dotenv_path=dotenv_path)
+
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
+print(f"Loaded GEMINI_API_KEY: {GEMINI_API_KEY}")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -121,5 +130,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-GEMINI_API_KEY="AIzaSyDx-gQJWw0EDIeyxj07V5ivooyfgWuD6IM"

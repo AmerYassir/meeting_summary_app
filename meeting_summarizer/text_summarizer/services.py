@@ -4,6 +4,7 @@ from django.conf import settings
 
 class TextSummarizerService:
     def __init__(self):
+        print("Initializing TextSummarizerService")
         print(settings.GEMINI_API_KEY)
         genai.configure(api_key=settings.GEMINI_API_KEY)
 
@@ -21,8 +22,6 @@ class TextSummarizerService:
         response = self.client.generate_content(
             contents=f"summarize the following text {text}",
         )
-        print(response.text)
-        print(response)
         return response.text
         
 
